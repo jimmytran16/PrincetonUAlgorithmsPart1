@@ -25,7 +25,7 @@ public class UnionFind {
       }
 
     public static void main(String[] args) {
-        UnionFind q = new UnionFind(10);
+        UnionFind q = new UnionFind(10); /* Call an instance of the UnionFind class and pass in 10 as a SIZE */
         /* Connect these pairs together */
         q.union(3, 8);
         q.union(5, 2);
