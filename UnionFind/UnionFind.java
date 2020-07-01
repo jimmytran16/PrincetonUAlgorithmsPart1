@@ -14,8 +14,13 @@ public class UnionFind {
     public boolean connected(int id1, int id2){ /* If they have the same ID, that means that are both connected */
         return id[id1] == id[id2];
     }
-
+    public void validate(int x, int y){
+      if(x<0||y<0){
+        throw new IllegalArgumentException("The number cannot be lesser than 0. Has to be positive");
+      }
+    }
     public void union(int id1, int id2) {
+        validate(id1,id2);
         int id_1 = id[id1]; /* Get the values of the current id of the objects and assign it to the vars */
         int id_2 = id[id2];
         for (int i = 0; i < id.length; i++) { /* Loop through the array and see if the id */
@@ -27,12 +32,16 @@ public class UnionFind {
     public static void main(String[] args) {
         UnionFind q = new UnionFind(10); /* Call an instance of the UnionFind class and pass in 10 as a SIZE */
         /* Connect these pairs together */
-        q.union(3, 8);
-        q.union(5, 2);
-        q.union(2, 3);
-        q.union(9, 1);
-        q.union(7, 4);
-        q.union(3, 9);
+        try{
+          q.union(3, 8);
+          q.union(5, 2);
+          q.union(2, 3);
+          q.union(9, 1);
+          q.union(7, 4);
+          q.union(3, 9);
+        }catch(IllegalArgumentException ex){
+            System.out.println(ex);
+        }
       //AFTER Union
       //ELEMENT # (THE OBJECT ITSELF) [0][1][2][3][4][5][6][7][8][9]
       //ELEMENT VALUE (THE ID)        [0][1][1][1][4][1][6][4][1][1] <-- VALUES AFTER UNION
